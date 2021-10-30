@@ -1,0 +1,7 @@
+-ban (oui)
+-warn (non)
+-kick (oui)
+-clear (oui)
+-eventuellement un shop (non)
+-Level (oui)
+-afk (oui)
