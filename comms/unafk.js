@@ -13,10 +13,15 @@ module.exports.check = (args) => {
 module.exports.action = async (msg, args) => {
 	if (commandeFormat.split(' ').length <= args.length) {
 		// executer le code
-        await msg.delete().catch();
-        const member = msg.member
-        await member.setNickname(`${member.user.username}`)
-        msg.channel.send({ content: `<@${msg.author.id}> Je viens de vous retirrer le mode [AFK] !` });
+        if(msg.author.id === '636446688969490433'){
+			await msg.delete().catch()
+			msg.channel.send({ content: `<@${msg.author.id}> Je viens de vous retirrer le mode [AFK] !` });
+		} else {
+            await msg.delete().catch();
+            const member = msg.member
+            await member.setNickname(`${member.user.username}`)
+            msg.channel.send({ content: `<@${msg.author.id}> Je viens de vous retirrer le mode [AFK] !` });
+        }
 
     }
 	else {
