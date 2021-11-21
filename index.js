@@ -178,18 +178,6 @@ client.on('messageCreate', async msg => {
         xpfile[msg.author.id].reqxp *=1.25
         xpfile[msg.author.id].reqxp = Math.floor(xpfile[msg.author.id].reqxp)
         xpfile[msg.author.id].level += 1
-        setTimeout(async () => {
-            if(xpfile[msg.author.id].level === 5){
-            await msg.member.roles.add('896700378966544424')
-        }
-        if(xpfile[msg.author.id].level === 10){
-            await msg.member.roles.add('896700713185443840')
-        }
-        if(xpfile[msg.author.id].level === 15){
-            await msg.member.roles.add('896700926843314196')
-        }
-        }, 3000);
-        
 
 
         const rank = new MessageEmbed()
