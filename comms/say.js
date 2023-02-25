@@ -13,7 +13,7 @@ module.exports.check = (args) => {
 module.exports.action = async (msg, args) => {
 	if (commandeFormat.split(' ').length <= args.length) {
 		// executer le code
-
+		msg.reply('La commande n\'est pas encore disponnible')
 		
 		// msg.delete();
 		// const nperm = {

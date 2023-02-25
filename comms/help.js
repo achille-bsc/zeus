@@ -45,12 +45,12 @@ module.exports.action = async (msg, args) => {
               value: "Permet de bannir un membre du serveur.",
             },
             {
-              name: "-stats",
-              value: "Pour voir tes statistiques.",
+              name: "-say",
+              value: "Permet d'envoyer un message sous l'identité du bot. [En cours de création]",
             },
-            ],
-            color: Colors.Blurple,
-            title: 'HELP - Liste de toutes les commandes'
+          ],
+          color: Colors.Blurple,
+          title: "HELP - Liste de toutes les commandes",
         };
         msg.channel.send({ embeds: [help] })
 
