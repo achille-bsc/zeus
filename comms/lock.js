@@ -1,4 +1,4 @@
-const { MessageEmbed } = require('discord.js');
+const { MessageEmbed, Colors } = require('discord.js');
 const commandeFormat = 'lock';
 const ALIAS = ['verouiller', 'vérouiller'];
 const fs = require('fs');
@@ -18,14 +18,18 @@ module.exports.action = async (msg, args) => {
 	if (commandeFormat.split(' ').length <= args.length) {
 		// executer le code
 		msg.delete();
-		const everlock = new MessageEmbed()
-			.setTitle('Erreur !')
-			.setColor('RED')
-			.setDescription('Ce salon est déjà vérrouillé.');
-		const locked = new MessageEmbed()
-			.setTitle('Vérouillé !')
-			.setColor('GREEN')
-			.setDescription('**__Ce salon a été verrouillé avec succès !__**');
+		const everlock = {
+			title: 'Erreur !',
+			color: Colors.DarkRed,
+			description: 'Ce salon est déjà vérouille.'
+		}
+
+		
+		const locked = {
+			title: 'Vérouillé !',
+			color: Colors.Green,
+			description: '**__Ce salon a été verrouillé avec succès !__**'
+		};
 		const channel = msg.mentions.channels.first() || msg.channel;
 		if (lock_chann.lockedChannels.includes(channel.id)) return msg.channel.send({ embeds: [everlock] });
 		lock_chann.lockedChannels.push(channel.id);

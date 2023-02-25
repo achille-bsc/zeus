@@ -1,3 +1,5 @@
+const { messageLink } = require("discord.js");
+
 const commandeFormat = 'afk';
 const ALIAS = [];
 
@@ -13,17 +15,19 @@ module.exports.check = (args) => {
 module.exports.action = async (msg, args) => {
 	if (commandeFormat.split(' ').length <= args.length) {
 		// executer le code
-		if(msg.author.id === '636446688969490433'){
-			await msg.delete().catch()
-			msg.channel.send({ content: `<@${msg.author.id}> Je viens de vous mettre [AFK] !` });
-		} else {
-			await msg.delete().catch()
-			const member = msg.member
-			await member.setNickname(`[AFK] - ${member.user.username}`).catch()
-			msg.channel.send({ content: `<@${msg.author.id}> Je viens de vous mettre [AFK] !` });
+		if (msg.deletable) {
+			await msg.delete();
 		}
-    }
-	else {
+			
+		try {
+			member.setNickname(`[AFK] - ${member.user.username}`);
+			msg.channel.send({
+        content: `<@${msg.author.id}> Je viens de vous mettre [AFK] !`,
+      });
+		} catch (error) {
+			msg.channel.send(`<@${msg.author.id}>, impossible de vous mettre AFK.  Il est possible que vous soyez trop haut dans la hierarchie.`)
+		}
+  } else {
 		msg.reply ('Mauvaise commande, voila ce que j\'attend **' + commandeFormat + '**');
 	}
 };
